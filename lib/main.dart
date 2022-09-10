@@ -16,10 +16,12 @@ class Dicee extends StatefulWidget {
 class _DiceeState extends State<Dicee> {
   int rb = 1;
   int lb = 1;
+  int tot = 0;
+
   @override
   Widget build(BuildContext context) {
     Random random = new Random();
-
+    tot = rb + lb;
     return MaterialApp(
         home: Scaffold(
       backgroundColor: Colors.blueGrey,
@@ -37,34 +39,54 @@ class _DiceeState extends State<Dicee> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Center(
-            child: Container(
-              child: Row(
-                //crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          lb = random.nextInt(6) + 1;
-                        });
-                      },
-                      child: Image.asset('images/dice$lb.png'),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlinedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStatePropertyAll<Color>(Colors.black45)),
+                  onPressed: () {},
+                  child: Text(
+                    'TOTAL : $tot',
+                    style: TextStyle(
+                      fontFamily: 'title',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white70,
+                      fontSize: 40.0,
                     ),
                   ),
-                  Expanded(
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() {
-                          rb = random.nextInt(6) + 1;
-                        });
+                ),
+                Container(
+                  child: Row(
+                    //crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              lb = random.nextInt(7);
+                            });
+                          },
+                          child: Image.asset('images/dice$lb.png'),
+                        ),
+                      ),
+                      Expanded(
+                        child: TextButton(
+                          onPressed: () {
+                            setState(() {
+                              rb = random.nextInt(7);
+                            });
 
-                        //randomNumber = random.nextInt(7) + 1;
-                      },
-                      child: Image.asset('images/dice$rb.png'),
-                    ),
+                            //randomNumber = random.nextInt(7) + 1;
+                          },
+                          child: Image.asset('images/dice$rb.png'),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Column(
@@ -77,8 +99,8 @@ class _DiceeState extends State<Dicee> {
                 ),
                 onPressed: () {
                   setState(() {
-                    rb = random.nextInt(6) + 1;
-                    lb = random.nextInt(6) + 1;
+                    rb = random.nextInt(7);
+                    lb = random.nextInt(7);
                   });
                 },
                 child: Text(
