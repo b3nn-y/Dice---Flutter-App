@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'dart:io';
 
 void main() {
   return runApp(Dicee());
@@ -89,6 +90,9 @@ class _DiceeState extends State<Dicee> {
                     fontSize: 40.0,
                   ),
                 ),
+              ),
+              SizedBox(
+                height: 5 + 5,
               ),
               OutlinedButton(
                 style: ButtonStyle(
