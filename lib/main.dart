@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'dart:io';
+import 'package:audioplayers/audioplayers.dart';
+import 'package:audiofileplayer/audiofileplayer.dart';
 
 void main() {
   return runApp(Dicee());
@@ -17,11 +19,13 @@ class _DiceeState extends State<Dicee> {
   int rb = 1;
   int lb = 1;
   int tot = 0;
+  final player = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
     Random random = new Random();
     tot = rb + lb;
+
     return MaterialApp(
         home: Scaffold(
       backgroundColor: Colors.blueGrey,
@@ -64,6 +68,9 @@ class _DiceeState extends State<Dicee> {
                       Expanded(
                         child: TextButton(
                           onPressed: () {
+                            Audio.load('assets/dice.mp3')
+                              ..play()
+                              ..dispose();
                             setState(() {
                               lb = random.nextInt(7);
                             });
@@ -74,6 +81,9 @@ class _DiceeState extends State<Dicee> {
                       Expanded(
                         child: TextButton(
                           onPressed: () {
+                            Audio.load('assets/dice.mp3')
+                              ..play()
+                              ..dispose();
                             setState(() {
                               rb = random.nextInt(7);
                             });
@@ -98,6 +108,9 @@ class _DiceeState extends State<Dicee> {
                       MaterialStatePropertyAll<Color>(Colors.black45),
                 ),
                 onPressed: () {
+                  Audio.load('assets/dice.mp3')
+                    ..play()
+                    ..dispose();
                   setState(() {
                     rb = random.nextInt(7);
                     lb = random.nextInt(7);
@@ -121,6 +134,9 @@ class _DiceeState extends State<Dicee> {
                     backgroundColor:
                         MaterialStatePropertyAll<Color>(Colors.black45)),
                 onPressed: () {
+                  Audio.load('assets/dice.mp3')
+                    ..play()
+                    ..dispose();
                   setState(() {
                     rb = 1;
                     lb = 1;
